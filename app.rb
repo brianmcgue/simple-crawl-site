@@ -5,30 +5,21 @@ Bundler.require
 
 register Sinatra::Reloader
 
+MAX_PAGES = 100
+
 after_reload do
   puts 'reloaded'
 end
-
 
 get '/' do
   erb :index
 end
 
-get '/page1' do
-  erb :page1
+get '/page/:id' do
+  @id = params[:id].to_i
+  raise Sinatra::NotFound unless @id.between?(1, MAX_PAGES)
+  erb :page
 end
-
-get '/page2' do
-  erb :page2
-end
-
-get '/page3' do
-  erb :page3
-end
-
-# get '/page4' do
-#   erb :page4
-# end
 
 not_found do
   erb :not_found

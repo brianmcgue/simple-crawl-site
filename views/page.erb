@@ -1,0 +1,11 @@
+<h1>Page <%= @id %></h1>
+
+<h2>Pages:</h2>
+<ul>
+  <li><a href="/">Home</a></li>
+  <% 10.times do |idx| %>
+    <% page_number = @id + 1 + idx %>
+    <% next if page_number > MAX_PAGES %>
+    <li><a href="/page/<%= page_number %>">Page <%= page_number %></a></li>
+  <% end %>
+</ul>
