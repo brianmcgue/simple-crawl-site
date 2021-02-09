@@ -5,7 +5,7 @@ Bundler.require
 
 register Sinatra::Reloader
 
-MAX_PAGES = 100
+MAX_PAGES = 1000
 
 after_reload do
   puts 'reloaded'
